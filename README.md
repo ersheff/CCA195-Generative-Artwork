@@ -1,1 +1,1 @@
-# CCA195-Generative-Artwork
+# CCA195 Generative Artwork
