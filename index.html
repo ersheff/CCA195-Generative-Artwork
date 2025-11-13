@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CCA 195 Generative Artwork</title>
+</head>
+
+<body>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: black;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      gap: 10px;
+
+      button {
+        appearance: none;
+        border: none;
+        padding: 6px;
+        background-color: rgb(134, 192, 229);
+        font-weight: bold;
+      }
+
+      .active {
+        background-color: rgb(222, 129, 126);
+      }
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      flex: 1;
+    }
+  </style>
+
+  <header>
+    <h1>CCA 195 Generative Artwork Projects</h1>
+    <p>Select a student's name below to see their artwork, then touch the screen to interact.</p>
+    <nav>
+      <div>
+        <button class="active"
+          value="https://openprocessing.org/sketch/2757421/embed/?plusEmbedHash=91d6d847&userID=519376&plusEmbedTitle=true&show=sketch">
+          Kayden Ament</button>
+        <button
+          value="https://openprocessing.org/sketch/2757458/embed/?plusEmbedHash=858457c1&userID=519376&plusEmbedTitle=true&show=sketch">
+          Cole Bourcy</button>
+        <button
+          value="https://openprocessing.org/sketch/2757480/embed/?plusEmbedHash=ddf62f41&userID=519376&plusEmbedTitle=true&show=sketch">
+          Ben Brown</button>
+        <button
+          value="https://openprocessing.org/sketch/2740283/embed/?plusEmbedHash=bc4ed074&userID=519376&plusEmbedTitle=true&show=sketch">Owen
+          Guenthner</button>
+        <button
+          value="https://openprocessing.org/sketch/2755077/embed/?plusEmbedHash=68701639&userID=519376&plusEmbedTitle=true&show=sketch">
+          Michael Moulton</button>
+        <button
+          value="https://openprocessing.org/sketch/2757623/embed/?plusEmbedHash=bb672338&userID=519376&plusEmbedTitle=true&show=sketch">
+          Victor Steele
+        </button>
+        <button
+          value="https://openprocessing.org/sketch/2754308/embed/?plusEmbedHash=53ec9628&userID=519376&plusEmbedTitle=true&show=sketch">
+          Jack Weinberg</button>
+        <button
+          value="https://openprocessing.org/sketch/2757530/embed/?plusEmbedHash=46c3c7e9&userID=519376&plusEmbedTitle=true&show=sketch">
+          Ivy Wickenhauser</button>
+      </div>
+    </nav>
+  </header>
+
+  <iframe
+    src="https://openprocessing.org/sketch/2757421/embed/?plusEmbedHash=91d6d847&userID=519376&plusEmbedTitle=true&show=sketch"
+    frameborder="0"></iframe>
+
+  <script>
+    let switcher;
+    const buttons = document.querySelectorAll('button');
+    const iframe = document.querySelector('iframe');
+    let bIndex = 0;
+
+    switcher = startSwitcher();
+
+    document.addEventListener('click', e => {
+      if (e.target.matches('button') && !e.target.classList.contains('active') && iframe.src !== e.target.value) {
+        bIndex = Array.from(buttons).indexOf(e.target);
+        setProject(bIndex);
+      }
+      clearInterval(switcher);
+      switcher = startSwitcher();
+    });
+
+    window.addEventListener('blur', () => {
+      clearInterval(switcher);
+      switcher = startSwitcher();
+    });
+
+    function startSwitcher() {
+      return setInterval(() => {
+        bIndex++;
+        if (bIndex >= buttons.length) bIndex = 0;
+        setProject(bIndex);
+      }, 60000);
+    }
+
+    function setProject(i) {
+      iframe.src = buttons[i].value;
+      buttons.forEach(b => b.classList.remove('active'));
+      buttons[i].classList.add('active');
+    }
+  </script>
+
+</body>
+
+</html>
