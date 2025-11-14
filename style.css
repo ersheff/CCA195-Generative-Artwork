@@ -20,27 +20,27 @@ header {
   justify-content: center;
   height: 240px;
   gap: 20px;
+}
 
-  h1 {
-    font-size: 3rem;
-  }
+h1 {
+  font-size: 3rem;
+}
 
-  p {
-    font-size: 1.6rem;
-  }
+p {
+  font-size: 1.6rem;
+}
 
-  button {
-    font-size: 1.2rem;
-    appearance: none;
-    border: none;
-    padding: 10px;
-    background-color: rgb(134, 192, 229);
-    font-weight: bold;
-  }
+button {
+  font-size: 1.2rem;
+  appearance: none;
+  border: none;
+  padding: 10px;
+  background-color: rgb(134, 192, 229);
+  font-weight: bold;
+}
 
-  .active {
-    background-color: rgb(222, 129, 126);
-  }
+.active {
+  background-color: rgb(222, 129, 126);
 }
 
 iframe {
